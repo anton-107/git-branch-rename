@@ -14,6 +14,11 @@ for branch in $BRANCHES; do
     continue
   fi
   
+  # Skip branches that already start with "old-"
+  if [[ "$branch" == old-* ]]; then
+    continue
+  fi
+  
   # Get the timestamp of the last commit on the branch
   LAST_COMMIT_DATE=$(git log -1 --format=%ct "$branch")
 
